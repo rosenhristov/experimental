@@ -1,27 +1,24 @@
 package com.rosenhristov.tasks.designpatterns.abstractfactorypattern;
 
-abstract class Loan {  
-    protected double rate;  
-    abstract void getInterestRate(double rate);  
-    public void calculateLoanPayment(double loanamount, int years)  
-    {  
-         /* 
-               to calculate the monthly loan payment i.e. EMI   
-                             
-               rate=annual interest rate / 12*100; 
-               n=number of monthly installments;            
-               oneYear = 12 months. 
-               so, n = years * 12; 
-  
-          */
-                 
+public abstract class Loan {
+
+    protected double rate;
+
+    public abstract void getInterestRate(double rate);
+
+    public void calculateLoanPayment(double loanAmount, int years) {
+
+         /**
+         * to calculate the monthly loan payment i.e. EMI
+         * rate = annual interest rate / 12 * 100%;
+         */
           double EMI;  
           int n;  
    
-          n = years*12;  
-          rate = rate/1200;  
-          EMI = ((rate*Math.pow((1+rate),n))/((Math.pow((1+rate),n))-1))*loanamount;  
+          n = years * 12;
+          rate = rate / 12 * 100;
+          EMI = ((rate * Math.pow((1 + rate), n)) / ((Math.pow((1 + rate), n)) - 1)) * loanAmount;
    
-          System.out.println("your monthly EMI is "+ EMI +" for the amount"+loanamount+" you have borrowed");     
+          System.out.printf("\nYour monthly EMI is %s for the amount of %s you have borrowed\n", EMI, loanAmount);
     }
 }

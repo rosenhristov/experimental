@@ -1,7 +1,10 @@
 package com.rosenhristov.tasks.designpatterns.abstractfactorypattern;
 
-class BussinessLoan extends Loan {  
-	public void getInterestRate(double r) {  
-		rate = r;  
-    }  
+class BusinessLoan extends Loan {
+
+	@Override
+	public void getInterestRate(double rate) {
+		this.rate = rate;
+    }
+
 }

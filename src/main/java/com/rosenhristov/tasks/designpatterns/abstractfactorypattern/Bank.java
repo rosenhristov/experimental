@@ -1,7 +1,9 @@
 package com.rosenhristov.tasks.designpatterns.abstractfactorypattern;
 
-import java.io.*;     
+public abstract class Bank {
 
-interface Bank {  
-        String getBankName();  
+    protected String bankName;
+
+    public abstract String getBankName();
+
 }  
