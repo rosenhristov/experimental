@@ -11,10 +11,8 @@ public enum BankType {
         this.value = value;
     }
 
-
-
-    public void setValue(String value) {
-        this.value = value;
+    public String getValue() {
+        return this.value;
     }
 
     public static boolean isValid(String input) {

@@ -1,6 +1,6 @@
 package com.rosenhristov.tasks.designpatterns.abstractfactorypattern;
 
-class HDFC implements Bank {  
+class HDFC extends Bank {
    private final String BNAME;  
    public HDFC(){  
            BNAME="HDFC BANK";  

@@ -1,6 +1,6 @@
 package com.rosenhristov.tasks.designpatterns.abstractfactorypattern;
 
-class ICICI implements Bank{  
+class ICICI extends Bank {
     private final String BNAME;  
     ICICI(){  
              BNAME="ICICI BANK";  
