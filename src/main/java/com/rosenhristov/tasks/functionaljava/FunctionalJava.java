@@ -1,6 +1,11 @@
 package com.rosenhristov.tasks.functionaljava;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class FunctionalJava {
 
@@ -57,7 +62,7 @@ public class FunctionalJava {
                            .max()
                            .getAsDouble();
                    double p2 = n2.getItems().stream()
-                           .map(i -> i.getPrice()* i.getAmount())
+                           .map(i -> i.getPrice() * i.getAmount())
                            .mapToDouble(Double::doubleValue)
                            .max()
                            .getAsDouble();
@@ -66,6 +71,34 @@ public class FunctionalJava {
                            : 0;
                 })
                 .get();
+    }
+
+    /**
+     * Return full title like
+     * "Mr. John Smith"
+     * "Mr. John A. Smith"
+     * "Ms. Jane Smith"
+     * "Ms. Jane A. Smith"
+     * "Kris Smith" (if unknown gender)
+     */
+    public static List<String> getFullTitleAndNames(List<Customer> customers) {
+        return customers
+                .stream()
+                .map(c -> {
+                    String midName = c.getMiddleName() == null
+                            ? null
+                            : c.getMiddleName().substring(0, 1) + ".";
+                    return new StringBuilder(c.getGender() == Gender.MALE
+                                    ? "Mr. " : c.getGender() == Gender.FEMALE
+                                    ? "Ms. " : EMPTY)
+                            .append(c.getFirstName())
+                            .append(" ")
+                            .append(midName == null ? EMPTY : midName)
+                            .append(" ")
+                            .append(c.getLastName())
+                            .toString();
+                })
+                .collect(Collectors.toList());
     }
 }
 
@@ -129,4 +162,47 @@ class Item{
     public void setAmount(int amount) {
         this.amount = amount;
     }
+}
+
+class Customer {
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private Gender gender;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+}
+
+enum Gender {
+    MALE, FEMALE
 }

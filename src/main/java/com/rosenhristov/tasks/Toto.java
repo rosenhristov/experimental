@@ -8,8 +8,8 @@ public class Toto
     public static void main(String[] args) {
         List<Integer> toto = initialize();
         for (int i = 1; i <= 3; i++) {
-            System.out.printf("{Lot %d}: ", i);
             generateNumbers(toto);
+            System.out.printf("{Lot %d}: ", i);
             printNumbers(toto);
             toto = clear();
         }
@@ -23,7 +23,7 @@ public class Toto
     private static List<Integer> initialize() {
         return new ArrayList<Integer>(6)
                 .stream()
-                .map(i -> i = 0)
+                .map(i -> 0)
                 .collect(Collectors.toList());
     }
 
